@@ -11,9 +11,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/', function(req,res){
-    console.log('Tumama.jpg')
+app.get('/',function(req,res){
+    res.status(400).json({
+        ok: true,
+        mensaje: 'This is home'
+    });
 })
+
 app.get('/usuario', function(req, res) {
     res.json('get Usuario LOCAL!!!');
 });
