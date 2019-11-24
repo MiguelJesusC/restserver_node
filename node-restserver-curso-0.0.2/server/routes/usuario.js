@@ -23,7 +23,7 @@ app.post('/usuario', function(req, res) {
     let usuario = new Usuario({
         nombre: body.nombre,
         email: body.email,
-        password: bcrypt.hashSync(body.password, 10),
+        password : bcrypt.hashSync(body.password, 10),
         role: body.role
     })
 
@@ -51,7 +51,6 @@ app.get('/usuario', function(req, res) {
                 err
             })
         }
-
         res.json({
             ok:true,
             usuarios
@@ -83,8 +82,33 @@ app.put('/usuario/:id', function(req, res) {
     // });
 });
 
-app.delete('/usuario', function(req, res) {
-    res.json('delete Usuario');
+app.delete('/usuario/:id', function(req, res) {
+    let id = req.params.id
+    
+    Usuario.findByIdAndRemove(id, (err, UsuarioBorrado) => {
+    
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                err
+            })
+        }
+
+        if(!UsuarioBorrado){
+            return res.status(400).json({
+                ok:false,
+                err : {
+                   message: 'Usuario borrado'
+                }
+            })
+        }
+
+        res.json({
+            ok:true,
+            UsuarioBorrado
+        })
+    })
+
 });
 
 module.exports = app; 
