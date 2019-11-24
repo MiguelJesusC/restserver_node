@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 
 //conection to moongo 
 
-mongoose.connect(URLDB,{ useNewUrlParser : true, useCreateIndex : true, useUnifiedTopology: true }, (err, res) => {
+mongoose.connect(process.env.URLDB ,{ useNewUrlParser : true, useCreateIndex : true, useUnifiedTopology: true }, (err, res) => {
     
 
     if( err ) throw err;

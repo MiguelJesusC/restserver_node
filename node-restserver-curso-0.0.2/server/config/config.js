@@ -20,9 +20,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 let urlDB
 
 if(process.env.NODE_ENV === 'dev') {
-    urlDB: 'mongodb://localhost:27017/cafe'
+    urlDB = 'mongodb://localhost:27017/cafe'
 }else{
-    urlDB: 'mongodb+srv://elliot:<password>@cluster0-pic7o.mongodb.net/test'
+    urlDB = 'mongodb+srv://elliot:<password>@cluster0-pic7o.mongodb.net/test'
 }
 
 process.env.URLDB = urlDB
